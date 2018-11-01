@@ -1,0 +1,10 @@
+
+
+<form action="/gossips" method="POST">
+  <p>titre</p>
+  <input type="string" name="titre">
+  <p>content</p>
+  <input type="string" name="content"><br></br>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="submit" value="Envoyer le formulaire">
+</form>

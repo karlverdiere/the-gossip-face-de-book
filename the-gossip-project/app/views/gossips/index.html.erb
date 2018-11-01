@@ -1,0 +1,18 @@
+<h1>La page des gossip </h1>
+<p>
+<a href="<%= new_gossip_path %>" class="btn btn-success">crée un gossip</a>
+</p>
+<% @gossips.each do |gossip| %>
+
+
+  <p><%=  gossip.titre %> :
+  <%=  gossip.content%></p>
+  <p>
+  <a href="<%=gossip_path(gossip.id)%>" class="btn btn-primary">lire la suite</a>
+  <a href="<%=edit_gossip_path(gossip.id)%>" class="btn btn-default">editer</a>
+  
+  </p>
+<% end %>
+<p>
+<a href="<%= new_gossip_path %>" class="btn btn-success">crée un gossip</a>
+</p>
