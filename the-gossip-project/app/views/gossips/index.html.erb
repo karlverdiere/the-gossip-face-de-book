@@ -5,12 +5,20 @@
 <% @gossips.each do |gossip| %>
 
 
-  <p><%=  gossip.titre %> :
-  <%=  gossip.content%></p>
+
   <p>
+    <p>le id : <%= gossip.users_id%></p>
+
+    <% if gossip.users_id  %>
+
+    <p>speudo : <%= User.where(id: gossip.users_id)[0]["name"]%></p>
+
+    <% end %>
+    <p>le titre :<%=  gossip.titre %> ; le content:
+    <%=  gossip.content%></p>
   <a href="<%=gossip_path(gossip.id)%>" class="btn btn-primary">lire la suite</a>
   <a href="<%=edit_gossip_path(gossip.id)%>" class="btn btn-default">editer</a>
-  
+  <a href="<%=gossip_path(gossip.id)%>" class="btn btn-danger">suprimer</a>
   </p>
 <% end %>
 <p>

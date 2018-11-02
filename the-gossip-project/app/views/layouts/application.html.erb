@@ -22,23 +22,34 @@
           <li class="nav-item active">
             <a class="nav-link" href="/gossips">voir les gossips <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
 
+                <% if session[:user] %>
+
+                <a class="nav-link" href="/users/deco">se deconnecter <span class="sr-only">(current)</span></a>
+
+
+                <% else %>
+
+                <a class="nav-link" href="/users/login">se connecter <span class="sr-only">(current)</span></a>
+                <% end %>
+
+
+
+              </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/new">crée un compte</a>
+          </li>
       </div>
     </nav>
+    <% if session[:user] %>
+
+       <h4>Bienvenue  sur la page  <%= session[:user][0]["name"] %> !</h4>
+       <h5>Tu es l'user n° <%= session[:user][0]["id"] %> sur cette page youpi !</h5>
+
+     <% end %>
     <%= yield %>
   </body>
 </html>

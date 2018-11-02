@@ -5,7 +5,11 @@ class GossipsController < ApplicationController
   end
 
   def create
-    @gossips = Gossip.create(titre: params[:titre],content: params[:content])
+    if session[:user]
+    @gossips = Gossip.create(users_id: session[:user][0]["id"],titre: params[:titre],content: params[:content])
+    else
+    redirect_to "/users/new"
+    end
   end
 
   def edit
@@ -28,6 +32,7 @@ class GossipsController < ApplicationController
 
   def index
     @gossips = Gossip.all
+    @User = User.all
   end
 
   def show
